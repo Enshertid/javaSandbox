@@ -17,7 +17,7 @@ public class Helicopter extends Aircraft implements Flyable {
     public void updateConditions() {
         Weather weather = Weather.valueOf(weatherTower.getWeather(coordinates));
 
-        logWeather(weather);
+        logWeather(weather, AircraftType.Helicopter);
         switch (weather) {
             case Sun:
                 changeCoordinates(new Coordinates(10, 0, 2));
@@ -32,31 +32,24 @@ public class Helicopter extends Aircraft implements Flyable {
                 changeCoordinates(new Coordinates(0, 0, 12));
                 break;
         }
-        if (coordinates.getHeight() < 0) {
-            logLanding(AircraftType.Helicopter);
+        if (coordinates.getHeight() <= 0) {
             weatherTower.unregister(this);
         }
     }
 
-    protected void logWeather(Weather weatherType) {
-        switch (weatherType) {
-            case Sun:
-                System.out.println("sun with helicopter");
-                break;
-            case Rain:
-                System.out.println("rain with helicopter");
-                break;
-            case Fog:
-                System.out.println("fog with helicopter");
-                break;
-            case Snow:
-                System.out.println("snow with helicopter");
-                break;
-        }
-    }
 
     @Override
     public void registerTower(WeatherTower weatherTower) {
         this.weatherTower = weatherTower;
+    }
+
+    @Override
+    public AircraftType getTypeOfAircraft() {
+        return AircraftType.Helicopter;
+    }
+
+    @Override
+    public String getNameOfAircraft() {
+        return name;
     }
 }

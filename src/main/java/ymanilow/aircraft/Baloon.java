@@ -17,7 +17,7 @@ public class Baloon extends Aircraft implements Flyable {
     public void updateConditions() {
         Weather weather = Weather.valueOf(weatherTower.getWeather(coordinates));
 
-        logWeather(weather);
+        logWeather(weather, AircraftType.Baloon);
         switch (weather) {
             case Sun:
                 changeCoordinates(new Coordinates(2, 0, 4));
@@ -32,31 +32,23 @@ public class Baloon extends Aircraft implements Flyable {
                 changeCoordinates(new Coordinates(0, 0, -15));
                 break;
         }
-        if (coordinates.getHeight() < 0) {
-            logLanding(AircraftType.Baloon);
+        if (coordinates.getHeight() <= 0) {
             weatherTower.unregister(this);
-        }
-    }
-
-    protected void logWeather(Weather weatherType) {
-        switch (weatherType) {
-            case Sun:
-                System.out.println("sun with baloon");
-                break;
-            case Rain:
-                System.out.println("rain with baloon");
-                break;
-            case Fog:
-                System.out.println("fog with baloon");
-                break;
-            case Snow:
-                System.out.println("snow with baloon");
-                break;
         }
     }
 
     @Override
     public void registerTower(WeatherTower weatherTower) {
         this.weatherTower = weatherTower;
+    }
+
+    @Override
+    public AircraftType getTypeOfAircraft() {
+        return AircraftType.Baloon;
+    }
+
+    @Override
+    public String getNameOfAircraft() {
+        return name;
     }
 }

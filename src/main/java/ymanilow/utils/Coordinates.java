@@ -1,9 +1,9 @@
 package ymanilow.utils;
 
 public class Coordinates {
-    private int longitude;
-    private int latitude;
-    private int height;
+    private final int longitude;
+    private final int latitude;
+    private final int height;
 
     public Coordinates(int longitude, int latitude, int height) {
         this.longitude = longitude;
@@ -23,6 +23,8 @@ public class Coordinates {
         return height;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Longitude " + longitude + " Latitude " + latitude + " height " + height;
+    }
 }

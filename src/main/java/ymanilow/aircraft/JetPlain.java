@@ -17,7 +17,7 @@ public class JetPlain extends Aircraft implements Flyable{
     public void updateConditions() {
         Weather weather = Weather.valueOf(weatherTower.getWeather(coordinates));
 
-        logWeather(weather);
+        logWeather(weather, AircraftType.JetPlain);
         switch (weather) {
             case Sun:
                 changeCoordinates(new Coordinates(0, 10, 2));
@@ -32,31 +32,23 @@ public class JetPlain extends Aircraft implements Flyable{
                 changeCoordinates(new Coordinates(0, 0, 7));
                 break;
         }
-        if (coordinates.getHeight() < 0) {
-            logLanding(AircraftType.JetPlain);
+        if (coordinates.getHeight() <= 0) {
             weatherTower.unregister(this);
-        }
-    }
-
-    protected void logWeather(Weather weatherType) {
-        switch (weatherType) {
-            case Sun:
-                System.out.println("sun with JetPlain");
-                break;
-            case Rain:
-                System.out.println("rain with JetPlain");
-                break;
-            case Fog:
-                System.out.println("fog with JetPlain");
-                break;
-            case Snow:
-                System.out.println("snow with JetPlain");
-                break;
         }
     }
 
     @Override
     public void registerTower(WeatherTower weatherTower) {
         this.weatherTower = weatherTower;
+    }
+
+    @Override
+    public AircraftType getTypeOfAircraft() {
+        return AircraftType.JetPlain;
+    }
+
+    @Override
+    public String getNameOfAircraft() {
+        return name;
     }
 }

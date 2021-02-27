@@ -2,6 +2,7 @@ package ymanilow.aircraft;
 
 import ymanilow.utils.AircraftType;
 import ymanilow.utils.Coordinates;
+import ymanilow.weather.Weather;
 
 
 public class Aircraft {
@@ -26,6 +27,23 @@ public class Aircraft {
         if (height > 100)
             height = 100;
         this.coordinates = new Coordinates(longitude, latitude, height);
+    }
+
+    protected void logWeather(Weather weatherType, AircraftType aircraftType) {
+        switch (weatherType) {
+            case Sun:
+                System.out.println("sun with " + aircraftType.name() + " " + this.name + " coordinates " + coordinates);
+                break;
+            case Rain:
+                System.out.println("rain with " + aircraftType.name() + " " + this.name + " coordinates " + coordinates);
+                break;
+            case Fog:
+                System.out.println("fog with " + aircraftType.name() + " " + this.name + " coordinates " + coordinates);
+                break;
+            case Snow:
+                System.out.println("snow with " + aircraftType.name() + " " + this.name + " coordinates " + coordinates);
+                break;
+        }
     }
 
     protected void logLanding(AircraftType type) {
