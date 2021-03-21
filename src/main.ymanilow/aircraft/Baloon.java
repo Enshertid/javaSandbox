@@ -1,10 +1,10 @@
-package ymanilow.aircraft;
+package main.ymanilow.aircraft;
 
-import ymanilow.utils.AircraftType;
-import ymanilow.utils.Coordinates;
-import ymanilow.utils.Flyable;
-import ymanilow.weather.Weather;
-import ymanilow.weather.WeatherTower;
+import main.ymanilow.utils.AircraftType;
+import main.ymanilow.utils.Coordinates;
+import main.ymanilow.utils.Flyable;
+import main.ymanilow.weather.Weather;
+import main.ymanilow.weather.WeatherTower;
 
 public class Baloon extends Aircraft implements Flyable {
     private WeatherTower weatherTower;

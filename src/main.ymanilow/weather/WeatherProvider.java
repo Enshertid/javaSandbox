@@ -1,10 +1,14 @@
-package ymanilow.weather;
+package main.ymanilow.weather;
 
-import ymanilow.utils.Coordinates;
+import main.ymanilow.utils.Coordinates;
+
+import java.util.Random;
 
 public class WeatherProvider {
     private static WeatherProvider weatherProvider;
     private final static String [] weather = {"Sun", "Fog", "Rain", "Snow"};
+    private static Random random = new Random (System.currentTimeMillis());
+    private static int count = 0;
 
 
     private WeatherProvider() {}
@@ -18,15 +22,13 @@ public class WeatherProvider {
     }
 
     public String getCurrentWeather(Coordinates coordinates) {
-
-        if (coordinates.getLatitude() < 50)
-            return weather[1];
-        else if (coordinates.getLatitude() < 65)
-            return weather[2];
-        else if (coordinates.getLongitude() < 75)
-            return weather[3];
-        else
-            return weather[4];
+        count++;
+        int index = Math.abs(random.nextInt());
+        if (count == 200) {
+            random = new Random(System.currentTimeMillis());
+            count = 0;
+        }
+        return weather[index % weather.length];
     }
 
 }

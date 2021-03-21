@@ -1,6 +1,6 @@
-package ymanilow.utils;
+package main.ymanilow.utils;
 
-import ymanilow.weather.WeatherTower;
+import main.ymanilow.weather.WeatherTower;
 
 public interface Flyable {
     public void updateConditions();

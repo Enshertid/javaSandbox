@@ -1,4 +1,4 @@
-package ymanilow.utils;
+package main.ymanilow.utils;
 
 public class Coordinates {
     private final int longitude;

@@ -1,10 +1,10 @@
-package ymanilow.aircraft;
+package main.ymanilow.aircraft;
 
-import ymanilow.utils.AircraftType;
-import ymanilow.utils.Coordinates;
-import ymanilow.utils.Flyable;
-import ymanilow.weather.Weather;
-import ymanilow.weather.WeatherTower;
+import main.ymanilow.utils.AircraftType;
+import main.ymanilow.utils.Coordinates;
+import main.ymanilow.utils.Flyable;
+import main.ymanilow.weather.Weather;
+import main.ymanilow.weather.WeatherTower;
 
 public class Helicopter extends Aircraft implements Flyable {
     private WeatherTower weatherTower;
@@ -29,7 +29,7 @@ public class Helicopter extends Aircraft implements Flyable {
                 changeCoordinates(new Coordinates(1, 0 , 0));
                 break;
             case Snow:
-                changeCoordinates(new Coordinates(0, 0, 12));
+                changeCoordinates(new Coordinates(0, 0, -12));
                 break;
         }
         if (coordinates.getHeight() <= 0) {

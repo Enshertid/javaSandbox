@@ -1,15 +1,14 @@
-package ymanilow.aircraft;
+package main.ymanilow.aircraft;
 
-import ymanilow.utils.AircraftType;
-import ymanilow.utils.Coordinates;
-import ymanilow.weather.Weather;
+import main.ymanilow.utils.AircraftType;
+import main.ymanilow.utils.Coordinates;
+import main.ymanilow.weather.Weather;
 
 
 public class Aircraft {
     protected long id;
     protected String name;
     private static long idCounter;
-
 
     Coordinates coordinates;
 

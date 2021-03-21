@@ -1,4 +1,4 @@
-package ymanilow.weather;
+package main.ymanilow.weather;
 
 public enum Weather {
     Sun,

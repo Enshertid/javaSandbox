@@ -1,18 +1,23 @@
-package ymanilow.weather;
+package main.ymanilow.weather;
 
-import ymanilow.utils.AircraftType;
-import ymanilow.utils.Flyable;
-import ymanilow.utils.Log;
+import main.ymanilow.utils.AircraftType;
+import main.ymanilow.utils.Flyable;
+import main.ymanilow.utils.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Tower {
     private final List<Flyable> observers;
-    private Log log = new Log();
+    private Log log;
 
     public Tower() {
-        observers = new ArrayList<Flyable>();
+        observers = new ArrayList<>();
+    }
+
+    public Tower(Log log) {
+        this.log = log;
+        observers = new ArrayList<>();
     }
 
     public void register(Flyable flyable){
