@@ -2,6 +2,7 @@ package main.ymanilow.aircraft;
 
 import main.ymanilow.utils.AircraftType;
 import main.ymanilow.utils.Coordinates;
+import main.ymanilow.utils.Log;
 import main.ymanilow.weather.Weather;
 
 
@@ -9,13 +10,15 @@ public class Aircraft {
     protected long id;
     protected String name;
     private static long idCounter;
+    private final Log log;
 
     Coordinates coordinates;
 
-    protected Aircraft(String name, Coordinates coordinates) {
+    protected Aircraft(String name, Coordinates coordinates, Log log) {
         this.name = "#" + name + "(" + id + ")";
         this.coordinates = coordinates;
         this.id = nextId();
+        this.log = log;
     }
 
     protected void changeCoordinates(Coordinates offset) {
@@ -31,22 +34,22 @@ public class Aircraft {
     protected void logWeather(Weather weatherType, AircraftType aircraftType) {
         switch (weatherType) {
             case Sun:
-                System.out.println("sun with " + aircraftType.name() + " " + this.name + " coordinates " + coordinates);
+                log.printMessage("sun with " + aircraftType.name() + " " + this.name + " coordinates " + coordinates);
                 break;
             case Rain:
-                System.out.println("rain with " + aircraftType.name() + " " + this.name + " coordinates " + coordinates);
+                log.printMessage("rain with " + aircraftType.name() + " " + this.name + " coordinates " + coordinates);
                 break;
             case Fog:
-                System.out.println("fog with " + aircraftType.name() + " " + this.name + " coordinates " + coordinates);
+                log.printMessage("fog with " + aircraftType.name() + " " + this.name + " coordinates " + coordinates);
                 break;
             case Snow:
-                System.out.println("snow with " + aircraftType.name() + " " + this.name + " coordinates " + coordinates);
+                log.printMessage("snow with " + aircraftType.name() + " " + this.name + " coordinates " + coordinates);
                 break;
         }
     }
 
     protected void logLanding(AircraftType type) {
-        System.out.println(type + name + ": landing");
+        log.printMessage(type + name + ": landing");
     }
 
     private long nextId(){

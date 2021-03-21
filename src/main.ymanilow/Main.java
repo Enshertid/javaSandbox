@@ -8,14 +8,16 @@ import main.ymanilow.weather.WeatherTower;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws AvajException {
+    public static void main(String[] args) throws AvajException, FileNotFoundException {
         Scanner scanner = setScanner(args);
-        Log log = new Log(System.out);
+        Log log = new Log(System.out, new PrintStream("scenario.txt"));
         WeatherTower weatherTower = new WeatherTower(log);
 
         Scenario scenario = getScenario(scanner, log);
@@ -34,7 +36,7 @@ public class Main {
 
     private static Scenario getScenario(Scanner scanner, Log log) throws AvajException {
         try {
-            return new Scenario(scanner, new Log(System.out));
+            return new Scenario(scanner, log);
         } catch (AvajException ex) {
             log.printException(ex);
             throw ex;

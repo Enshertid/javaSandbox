@@ -3,14 +3,15 @@ package main.ymanilow.aircraft;
 import main.ymanilow.utils.AircraftType;
 import main.ymanilow.utils.Coordinates;
 import main.ymanilow.utils.Flyable;
+import main.ymanilow.utils.Log;
 import main.ymanilow.weather.Weather;
 import main.ymanilow.weather.WeatherTower;
 
 public class JetPlain extends Aircraft implements Flyable{
     private WeatherTower weatherTower;
 
-    JetPlain(String name, Coordinates coordinates) {
-        super(name, coordinates);
+    JetPlain(String name, Coordinates coordinates, Log log) {
+        super(name, coordinates, log);
     }
 
     @Override

@@ -23,12 +23,18 @@ public class Tower {
     public void register(Flyable flyable){
         if (!observers.contains(flyable)) {
             observers.add(flyable);
+            log.printMessage(
+                    "Tower says: " +
+                    flyable.getTypeOfAircraft() +
+                    flyable.getNameOfAircraft() +
+                    " registered to weather tower."
+            );
         }
     }
     public void unregister(Flyable flyable) {
         logLanding(flyable.getTypeOfAircraft(), flyable.getNameOfAircraft());
         observers.remove(flyable);
-        log.getStream().println(
+        log.printMessage(
                 "Tower says: " +
                 flyable.getTypeOfAircraft() +
                 flyable.getNameOfAircraft() +
@@ -43,6 +49,6 @@ public class Tower {
     }
 
     private void logLanding(AircraftType aircraftType, String nameOfAircraft) {
-        log.getStream().println(aircraftType.name() + nameOfAircraft + " landing.");
+        log.printMessage(aircraftType.name() + nameOfAircraft + " landing.");
     }
 }

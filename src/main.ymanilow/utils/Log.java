@@ -3,29 +3,30 @@ package main.ymanilow.utils;
 import main.ymanilow.exceptions.AvajException;
 
 import java.io.PrintStream;
-import java.util.Arrays;
 
 public class Log {
-    private PrintStream stream;
-    public Log(PrintStream stream) {
-        this.stream = stream;
+    private PrintStream exceptionsStream;
+    private PrintStream logStream;
+    public Log(PrintStream exceptionsStream, PrintStream logStream) {
+        this.exceptionsStream = exceptionsStream;
+        this.logStream = logStream;
     }
 
-    public PrintStream getStream() {
-        return stream;
+    public PrintStream getExceptionsStream() {
+        return exceptionsStream;
     }
 
     public void printMessage(String message) {
-        stream.println(message);
+        logStream.println(message);
     }
 
     public void printException(AvajException ex) {
-        stream.println(ex);
+        exceptionsStream.println(ex);
         for (StackTraceElement string : ex.getStackTrace()) {
-            stream.println(string);
+            exceptionsStream.println(string);
         }
     }
     public void printExceptionWithoutStacktrace(AvajException ex){
-        stream.println(ex);
+        exceptionsStream.println(ex);
     }
 }

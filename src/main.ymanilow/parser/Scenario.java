@@ -69,6 +69,7 @@ public class Scenario {
                 , coordinates.getLongitude()
                 , coordinates.getLatitude()
                 , coordinates.getHeight()
+                , log
         );
     }
 
